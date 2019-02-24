@@ -1,0 +1,26 @@
+<!-- 
+- Sử dụng getElementsByTagName() để lấy ra danh sách các <p> có class là 'foo'
+- Lặp qua các phần tử và thay đổi nội dung của từng phần tử bằng cách append (thêm vào cuối) một đường link tới coders.tokyo site
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>innerHTML</title>
+</head>
+<body>
+	<p class="foo">VÔ CÙNG ( Vì Anh Thương Em ) - Phan Duy Anh [ MV Audio Lyric ]</p>
+	<p class="food">Cơn mưa tình yêu</p>
+	<p class="foo">Le Vie Ne Ment Past - Remix</p>
+</body>
+<script type="text/javascript">
+	var listp = document.getElementsByTagName('p');
+
+	for(var i = 0; i < listp.length; i++) {
+		if(listp[i].classList.contains('foo')) {
+			listp[i].innerHTML += ' <a href = "#">Coders.Tokyo<a>';
+		}
+	}
+</script>
+</html>

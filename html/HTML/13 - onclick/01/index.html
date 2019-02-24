@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>onclick</title>
+</head>
+<body>
+	<p id="count"></p>
+	<button onclick="add1()">+1</button>
+
+	<script type="text/javascript">
+		var count = 0;
+		var counter = document.getElementById('count');
+		counter.innerHTML = count;
+		function add1() {
+			var value = document.getElementById('count');
+			var number = Number(value.textContent)+1;
+			value.innerHTML = number;
+
+		}
+		// Tạo 1 button mới nằm dưới p
+		// Viết code sao cho khi click button đó thì giá trị biến `count` tăng 1 đơn vị và nội dung của `counter` cũng thay đổi theo`
+
+
+
+	</script>
+</body>
+</html>

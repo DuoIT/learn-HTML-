@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Event "change"</title>
+</head>
+<body>
+	<span>Giới tính: </span>
+	<select id="gender">
+		<option>Tất cả</option>
+		<option>Nam</option>
+		<option>Nữ</option>
+	</select>
+	<ul id="listUser">
+		
+	</ul>
+
+	<input name="Value">
+</body>
+<script type="text/javascript">
+	var users = [
+		{ name: 'Hoài', gender: 'Nam' },
+		{ name: 'Dương', gender: 'Nữ' },
+		{ name: 'Huy', gender: 'Nam'}
+	]
+	render(users);
+	var selectGender = document.getElementById('gender');
+	selectGender.addEventListener('change',function () {
+		var value = selectGender.value;
+		var filterUser = users.filter(user => {
+			return user.gender === value;
+		});		
+		if(value == 'Tất cả')
+			render(users);
+		else render(filterUser);
+	});
+	function render (list) {
+		var renderList = list.map(x => {
+			return '<li>' + x.name + ' - ' + x.gender +'</li>';
+		});
+		var listUser = document.getElementById('listUser');
+		listUser.innerHTML = renderList.join('');
+	}
+	// function 
+
+</script>
+
+</html>

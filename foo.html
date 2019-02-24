@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>innerHTML</title>
+</head>
+<body>
+	<p class = "foo">Dong xanh</p>
+	<p class = "roo">Con mua tinh yeu</p>
+	<p class = 'hoaile'>Hoai Le</p>
+</body>
+<script type="text/javascript">
+	var list = document.getElementsByTagName('p');
+
+	for(var i=0;i<list.length;i++)
+	{
+		if(list[i].classList.contains('foo'))
+		{
+			list[i].innerHTML += '<a href = "#">Codder.tokyo<a>';
+		}
+	}
+</script>
+</html>
+
+<!-- 
+- Sử dụng getElementsByTagName() để lấy ra danh sách các <p> có class là 'foo'
+- Lặp qua các phần tử và thay đổi nội dung của từng phần tử bằng cách append (thêm vào cuối) một đường link tới coders.tokyo site
+-->

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>POST</title>
+</head>
+<body>
+	<form id="add">
+		<label>NAME</label>
+		<input type="text" name="name" id="name"> <br>
+		<label>AGE</label>
+		<input type="number" name="age" id="age"> <br>
+		<button id="btn-add"">ADD to DATABASE</button>
+	</form>
+
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+	var btn = document.getElementById('btn-add');
+	btn.addEventListener('click', function () {
+		var form = document.getElementById('add');
+		var url = 'http://localhost:9081/todos';
+		var name = document.getElementById('name');
+		var age = document.getElementById('age');
+		console.log(name);
+		axios.post(url, {
+			"name" : name.value,
+			"age" : age.value
+		})
+		.then(function (res) {
+			console.log(res);
+		});
+		form.reset();
+	});
+</script>
+</html>

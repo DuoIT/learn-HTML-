@@ -1,0 +1,46 @@
+<!-- internal script -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TODO list</title>
+</head>
+<body>
+	<input id="new-item" type="text" />
+	<button onclick="addItem()">ADD</button>
+	<ul id='todo-list'>
+		<!-- <li>Take shower</li>
+		<li>Have a walk</li>
+		<li>Go to bed</li> -->
+	</ul>
+
+	<script type="text/javascript">
+		var storageKey = 'todolist';
+		//var todoList = ['Take shower','Have a walk','Go to bed'];
+		var todoList = JSON.parse(localStorage.getItem(storageKey));
+
+		function addItem(){
+			//get values of the input
+			var input = document.getElementById('new-item');
+			var newItem = input.value;
+			//add to todolist array
+			todoList.push(newItem);
+			//re-render
+			render();
+			// clear input
+			input.value = " ";
+			//store data
+			localStorage.setItem(storageKey, JSON.stringify(todolist));
+		}
+function render(){
+		var htmlList = document.getElementById('todo-list');
+		var content = todoList.map(function(item){
+			return '<li>' + item + '</li>';
+		});
+
+		// console.log(content);
+
+		 htmlList.innerHTML = content.join('');}
+		 render();
+	</script>
+</body>
+</html>

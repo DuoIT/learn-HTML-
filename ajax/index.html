@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ajax</title>
+</head>
+<body>
+	<h2>Thanh vien</h2>
+	<input type="text" id="searchInput"  placeholder="Search by name..."/>
+	<ul id="userList"></ul>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script type="text/javascript">
+
+	var url = 'http://localhost:9081/todos';
+	axios.get(url).then(function(res){
+		var items = res.data;
+		console.log('Data load..',items);
+	})
+		var user = [ 
+	{
+		name: 'Duong',
+		phone: '0123456789'
+	},
+	{
+		name:'Hoai',
+		phone: '023456789'
+	},
+	{
+		name:'Hung',
+		phone:'02345154564'
+	},
+	{
+		name:'Han',
+		phone:'023154564'
+	},
+	{
+		name:'Duyen',
+		phone:'02345154564'
+	},
+	{
+		name:'Huyen',
+		phone:'02345154564'
+	},
+	{
+		name:'Bao',
+		phone:'02345154564'
+	}
+];
+var userList = document.getElementById('userList');
+var searchInput = document.getElementById('searchInput');
+function render(user) 
+	{
+		var content = user.map(function(user) {
+			return '<li>' + user.name + ' - ' + user.phone + '</li>';
+		});
+		userList.innerHTML = content.join(''); 
+}
+
+render(user);
+
+searchInput.addEventListener('keyup', function(){
+	// sự kiện 'change' chỉ xảy ra khi input bị mất focus
+  // sử dụng sự kiện keyup để tìm kiếm người dùng có số điện thoại khớp với nội dung tìm kiếm.
+  // Gợi ý: 
+  // - biến value dưới đây là giá trị của input tại thời điểm gõ phím
+  // - sử dụng array.filter và string.indexOf để lọc users array, trả về những phần tử có số điện thoại chứa string lưu trong biến `value`
+  // Sử dụng Chrome Developer Tools để xem giá trị hiển thị ra sau mỗi lần gõ
+  
+  var value = searchInput.value;
+  var info = user.filter(x => {
+  	return x.name.indexOf(value) != -1
+  });
+  render(info);
+});
+	</script>
+</body>
+</html>

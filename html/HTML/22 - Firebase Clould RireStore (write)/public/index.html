@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/5.8.3/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/5.8.0/firebase-firestore.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/5.8.3/firebase-auth.js"></script>
+    <script defer src="/__/firebase/5.8.3/firebase-database.js"></script>
+    <script defer src="/__/firebase/5.8.3/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/5.8.3/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+
+    
+  </head>
+  <body>
+    <input type=""text name="name" id="input-name">
+    <button id="btn-add">Add</button>
+
+    <ol id="list">
+      
+    </ol>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var arrList = []
+        var db = firebase.firestore();
+        db.collection("todos").get().then((snap) => {
+          arrList = snap.docs;
+          render ();
+
+        });
+        function render () {
+          var data = arrList.map(item => {
+            var data = item.data();
+            return '<li>' + data.name + '</li>';
+          });
+          var list = document.getElementById('list');
+          list.innerHTML = data.join('');
+        }
+        var btnAdd =  document.getElementById('btn-add');
+        btnAdd.addEventListener('click', function () {
+          var input = document.getElementById('input-name');
+          var newItem = { name: input.value }
+          writeDB (newItem);
+        });
+        function writeDB (data) {
+          db.collection("todos").add(data)
+            .then(function (docRef) {
+              return docRef.get();
+            })
+            .then(function (snap) {
+              arrList.push(snap);
+              render();
+            });
+
+        }
+
+      });
+    </script>
+  </body>
+</html>

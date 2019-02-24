@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>onclick</title>
+</head>
+<body>
+	<input type="text" id="name" placeholder="Enter your name" />
+	<button onclick="sayHello()">Say Hi!</button>
+</body>
+
+<script type="text/javascript">
+	function sayHello () {
+		var x = document.getElementById('name');
+		var value = x.value;
+		alert('Hi '+value);
+		x.value = '';
+	}
+
+</script>
+
+</html>
+
+<!-- Viết code sao cho khi nhập tên ai đó vào ô input, click vào nút Say Hi! sẽ hiển thị ra alert box với nội dung: Hi kèm theo tên người đó. Ví dụ: Hi Coders.Tokyo -->

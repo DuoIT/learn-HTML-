@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GET, PATCH, DELETE</title>
+</head>
+<body>
+	<ul id="list">
+		
+	</ul>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+	var list = document.getElementById('list');
+	var url = 'http://localhost:9081/todos';
+	axios.get(url)
+	.then (function (res) {
+		var value = res.data.map(function (item) {
+			return '<li>' + item.name + ' - ' + item.age + '</li>';
+		});
+		list.innerHTML = value.join('');
+	});
+
+</script>
+
+</html>

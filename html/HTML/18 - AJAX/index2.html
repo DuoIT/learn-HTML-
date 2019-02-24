@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AJAX</title>
+</head>
+<body>
+	<ul id="list">
+		
+	</ul>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+	var list = document.getElementById('list');
+	var url = 'http://localhost:9081/todosw'
+	axios.get(url)
+	.then(function (res) {
+		console.log(res.data);
+		// var value = res.data.map(function (content) {
+		// 	return '<li>' + content.name + ' - ' + content.age + '</li>';
+		// });
+		// list.innerHTML = value.join('');
+	});
+
+	</script>
+</html>

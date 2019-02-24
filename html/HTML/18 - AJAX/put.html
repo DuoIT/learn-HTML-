@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>PUT</title>
+</head>
+<body>
+	<ul id="list">
+		
+	</ul>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+	var list = document.getElementById('list');
+	var url = 'http://localhost:9081/todos/1';
+	axios.put(url, {
+	    "name": "Lê C",
+	    "age": "29"
+	})
+    .then(function (response) {
+      console.log(response.data);
+    })
+    .catch(function (error) {
+        console.log(error);
+        alert('Sorry! Server is not able to process this request at the moment.');
+    });
+    
+</script>
+</html>
